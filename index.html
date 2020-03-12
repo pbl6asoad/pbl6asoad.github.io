@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body style="height: 75%;">
+<body style="height: 100%;margin: 0;">
     <main style="height:75%;">
         <select id="select1">
             <option>Выберите регион</option>      
@@ -26,25 +26,26 @@
                   Выберите время
               </option>
           </select>
-          <div>
-              <p id="city"></p>  
-              <p id="date"></p>
-              <p id="time"></p>
-              <p id="temp"></p>
-              <p id="hum"></p>
-              <p id="speed"></p>
-              <p id="direction"></p>
-              <div style="position: relative; display: inline-block; width: 20%;">
-                <img id="img" src="" alt="" style="width: 100%;">
-                <img id="arrow" src="https://i.stack.imgur.com/Pm5ZL.png" alt="" style="    position: absolute;
-                margin: auto;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                display: none;
-                max-width: 50px;">
-              </div>
+          <div style="max-width:200px;background-color: rgb(255, 255, 255, 0.7);width: 50%;position: absolute;bottom:30px;left:0;margin: 0 auto;padding: 0%;">
+              <div id="city"></div>  
+              <div id="date"></div>
+              <div id="time"></div>
+              <div id="temp"></div>
+              <div id="hum"></div>
+              <div id="speed"></div>
+              <div id="direction"></div>
+
+          </div>
+          <div style="position: absolute;bottom:0;right:0;display: inline-block;width: 49%;max-width: 200px;">
+            <img id="img" src="" alt="" style="width: 100%;">
+            <img id="arrow" src="https://i.stack.imgur.com/Pm5ZL.png" alt="" style="    position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: none;
+            max-width: 50px;">
           </div>
     </main>
     <footer style="height:25%">
