@@ -88,6 +88,7 @@ fetch('https://gist.githubusercontent.com/pbl6asoad/cd160e40d30e9ff468488fcb0bf6
             fullArray = []
            for(let i = 0; i<data.list.length; i++){
             dateArray = data.list[i].dt_txt.split(" ")
+            console.log(data.list)
             let currentTimeWeather = [dateArray[0], dateArray[1], data.list[i].main.temp, data.list[i].main.humidity,  data.list[i].wind.speed, data.list[i].wind.deg ]
             fullArray.push(currentTimeWeather)
             // newOption.innerText = data.list[i].dt_txt
@@ -156,7 +157,7 @@ fetch('https://gist.githubusercontent.com/pbl6asoad/cd160e40d30e9ff468488fcb0bf6
                  
                  document.querySelector("#speed").innerText = "Скорость ветра: " + finalArray[i][4] + "м/с"
                  
-                 document.querySelector("#direction").innerText = "Направление ветра: " + finalArray[i][5] 
+                 document.querySelector("#direction").innerText = "Направление ветра: " //+ finalArray[i][5] 
                  
                  document.querySelector("#img").src = "mapwind.png"
 
@@ -165,10 +166,29 @@ fetch('https://gist.githubusercontent.com/pbl6asoad/cd160e40d30e9ff468488fcb0bf6
                  document.querySelector("#arrow").style.display = "inline"
 
 
-                 
+                if(parseInt(finalArray[i][1]) > 6 && parseInt(finalArray[i][1]) < 21){
+                    document.querySelector("footer").style.backgroundColor = "green"                    
+                    document.querySelector("main").style.backgroundColor = "lightblue"
+                    document.querySelector(".sun").style.backgroundColor = "yellow"
+                }
 
-                 
-                console.log(finalArray[i])
+                 else{ 
+                    document.querySelector(".sun").style.backgroundColor = "white"   
+                    document.querySelector("footer").style.backgroundColor = "darkslategrey"                    
+                    document.querySelector("main").style.backgroundColor = "darkblue"
+                 }
+                 switch(parseInt(finalArray[i][1])){
+                     case 0: case 12 : document.querySelector(".sun").style.top = 20 + "%"; document.querySelector(".sun").style.left = 40 + "%"; break; 
+                    
+                     case 3: case 15 : document.querySelector(".sun").style.top = 20 + "%"; document.querySelector(".sun").style.left =  60 + "%"; break;  
+                     
+                     case 6: case 18 : document.querySelector(".sun").style.top = 40 + "%"; document.querySelector(".sun").style.left =  80 + "%"; break;
+                     
+                     case 9: case 21 : document.querySelector(".sun").style.top = 40 + "%";  document.querySelector(".sun").style.left =  20 + "%";break;  
+                    
+
+                     console.log(parseInt(finalArray[i][1]))
+                 }
                 }
             }
            

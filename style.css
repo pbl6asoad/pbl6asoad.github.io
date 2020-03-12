@@ -1,0 +1,21 @@
+.sky-day{
+ background-color: lightblue;
+}
+.sky-night{
+    background-color: darkblue;
+}
+.earth-night{
+ background-color: darkslategrey;
+}
+.earth-day{
+
+    background-color: green;
+}
+.sun{
+    top: 120%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: yellow;
+}
