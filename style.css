@@ -19,3 +19,10 @@
     border-radius: 50%;
     background-color: yellow;
 }
+select{
+    display: block;
+    border: 0;
+    background-color: lightgray;
+    padding: 9px;
+    margin-bottom: 15px;
+}

@@ -161,9 +161,13 @@ fetch('https://gist.githubusercontent.com/pbl6asoad/cd160e40d30e9ff468488fcb0bf6
                  
                  document.querySelector("#img").src = "mapwind.png"
 
+                 document.querySelector("#arrow").style.opacity = "1"
+
+                 document.querySelector("#arrow").style.display = "inline"
+                 
                  document.querySelector("#arrow").style.transform = "rotate(" + finalArray[i][5] +"deg)"
                  
-                 document.querySelector("#arrow").style.display = "inline"
+                 
 
 
                 if(parseInt(finalArray[i][1]) > 6 && parseInt(finalArray[i][1]) < 21){
