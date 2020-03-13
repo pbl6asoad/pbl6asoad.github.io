@@ -12,15 +12,18 @@
     background-color: green;
 }
 .sun{
-    top: 120%;
+    top: 80%;
+    left: 10%;
     position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: yellow;
+    background-color: transparent;
     transition: .5s;
 }
 select{
+    position: relative;
+    z-index: 2;
     display: block;
     border: 0;
     background-color: lightgray;

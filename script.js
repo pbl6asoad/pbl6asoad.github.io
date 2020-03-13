@@ -36,7 +36,6 @@ fetch('https://gist.githubusercontent.com/pbl6asoad/cd160e40d30e9ff468488fcb0bf6
                 
                 scope = commits[0].regions[i].cities
                 //console.log(scope)
-                console.log(scope)
             } else{
                 
             }
