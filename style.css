@@ -18,6 +18,7 @@
     height: 50px;
     border-radius: 50%;
     background-color: yellow;
+    transition: .5s;
 }
 select{
     display: block;
