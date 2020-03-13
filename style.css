@@ -19,7 +19,7 @@
     height: 50px;
     border-radius: 50%;
     background-color: transparent;
-    transition: .5s;
+    transition: 1.5s;
 }
 select{
     position: relative;
