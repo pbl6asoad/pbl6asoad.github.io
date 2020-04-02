@@ -1,224 +1,141 @@
-//import jsonCity from "./newscript.js";
-// console.log(jsonCity)
+let getToken = document.querySelector("#getToken");
+let login = document.querySelector("#enter");
+let showRegisterForm = document.querySelector("#showRegisterForm");
+let showLoginForm = document.querySelector("#showLoginForm");
+let loginInput = document.querySelector("#login")
+let passwordInput = document.querySelector("#password") 
+let loginLogin = document.querySelector("#loginLogin")
+let passwordLogin = document.querySelector("#passwordLogin") 
+const vk = document.querySelector("#vkAuth")
 
-fetch('https://gist.githubusercontent.com/pbl6asoad/cd160e40d30e9ff468488fcb0bf6f0a2/raw/ac7fb6bc4f89143820e5bd440974de08cc0f1b54/by%2520cities')
-.then(response => response.json())
-.then(commits => {
-    let scope = commits;
-    let lng;
-    let lat;
-    let currentCity;
-    let cityLon
-    let cityLat 
-        let url
-        let dateArray
-        let fullArray = []
-        let splitedArray =[]
-        let finalArray = []
-        let thisCity
-    commits[0].regions.forEach(obl => {
-        //console.log(obl.name)
-        var elementChildrens = document.querySelector("#select1");
-    
-        // for (var i=0, child; child=elementChildrens[i]; i++) {
-        //      child.innerHTML = obl.name;
-        // }
-        let newOption = document.createElement("option")
-        newOption.innerText = obl.name
-        elementChildrens.appendChild(newOption)
-        // elementChildrens[currentCity].innerHTML = obl.name;
-       
-    });
-    
-    document.querySelector("#select1").addEventListener('change', (event) => {
-        for (let i = 0; i < 6; i++){
-            if (event.target.value == commits[0].regions[i].name){
-                
-                scope = commits[0].regions[i].cities
-                //console.log(scope)
-            } else{
-                
-            }
-        }
-    
-    });
-    
-    select1.addEventListener("click", changeCities)
-    
-    function changeCities(){
-        document.querySelector("#select1").addEventListener('change', (event) => {
-            var node = document.getElementById("select2");
-            while (node.getElementsByTagName('option')[1]) {
-                node.removeChild(node.lastChild);
-            }
-            //console.log(scope.length)
-            for(let i = 0; i < scope.length; i++){
-    
-                var elementChildrens = document.querySelector("#select2");
-                let newOption = document.createElement("option")
-                newOption.innerText = scope[i].name
-                elementChildrens.appendChild(newOption)
-    
-            }
-            
-            
-        
-        });
+loginInput.addEventListener('input', (event)=> {
+    getToken.setAttribute('disabled', 'true')  
+    if(loginInput.value !== '' && passwordInput.value != '') {
+        console.log("enabled");
+        getToken.removeAttribute('disabled') 
+    } else{  
+        console.log("disabled");        
     }
-    
-    
-    
-    
-    document.querySelector("#select2").addEventListener('change', (event) => { 
-        
-        currentCity = event.target.value
-        thisCity = currentCity;
-        for (let i = 0; i < scope.length; i++){
-           if (scope[i].name == currentCity){
-               cityLat = scope[i].lat.toFixed(2)
-               cityLon = scope[i].lng.toFixed(2)
-           }
-    
-        }
-        url = "https://api.openweathermap.org/data/2.5/forecast?lat="+cityLat+"&lon="+cityLon+"&appid=6a6b354c505111229d182096d88f328b"
-     
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            fullArray = []
-           for(let i = 0; i<data.list.length; i++){
-            dateArray = data.list[i].dt_txt.split(" ")
-            console.log(data.list)
-            let currentTimeWeather = [dateArray[0], dateArray[1], data.list[i].main.temp, data.list[i].main.humidity,  data.list[i].wind.speed, data.list[i].wind.deg ]
-            fullArray.push(currentTimeWeather)
-            // newOption.innerText = data.list[i].dt_txt
-            // elementChildrens.appendChild(newOption)
+})
 
-           }
-
-           let node = document.getElementById("select3");
-           while (node.getElementsByTagName('option')[1]) {
-              node.removeChild(node.lastChild);
-           }
-           for(let i = 0; i<fullArray.length; i++){
-              if(i == 0 || fullArray[i][0] != fullArray[i-1][0]){
-                 var elementChildrens = document.querySelector("#select3");
-                 let newOption = document.createElement("option")
-                 newOption.innerText = fullArray[i][0]
-                 elementChildrens.appendChild(newOption)
-              }
-              
-           }
-              console.log(fullArray)
-            function qwww(e){ 
-            
-                console.log(e.target.value)
-                let node = document.getElementById("select4");
-                while (node.getElementsByTagName('option')[1]) {
-                   node.removeChild(node.lastChild);
-                }
-                finalArray = []
-                for( let i = 0; i < fullArray.length; i++){
-                   if(e.target.value == fullArray[i][0]){
-                       console.log(i)
-                       finalArray.push(fullArray[i])
-                        var elementChildrens = document.querySelector("#select4");
-                        let newOption = document.createElement("option")
-                        newOption.innerText = fullArray[i][1]
-                        elementChildrens.appendChild(newOption)
-
-                   }
-
-                }
-
-                
-           document.querySelector("#select3").removeEventListener('change', qwww)
-           
-           document.querySelector("#select3").addEventListener('change', qwww)
-            }
-
-           document.querySelector("#select3").addEventListener('change', qwww)
-        
-           
-          
-           function four(e){ 
-            console.log(e.target.value)
-            for(let i = 0; i < finalArray.length; i++){
-                if (e.target.value == finalArray[i][1]){
-                 document.querySelector("#city").innerText = "Город: " + thisCity 
-
-                 document.querySelector("#date").innerText = "Дата: " + finalArray[i][0]
-                 
-                 document.querySelector("#time").innerText = "Время: " + finalArray[i][1]
-                 
-                 document.querySelector("#temp").innerText = "Температура: " + (finalArray[i][2] - 273.15).toFixed(1) + "°C"
-                 
-                 document.querySelector("#hum").innerText = "Влажность: " + finalArray[i][3] + "%"
-                 
-                 document.querySelector("#speed").innerText = "Скорость ветра: " + finalArray[i][4] + "м/с"
-                 
-                 document.querySelector("#direction").innerText = "Направление ветра: " //+ finalArray[i][5] 
-                 
-                 document.querySelector("#img").src = "mapwind.png"
-
-                 document.querySelector("#arrow").style.opacity = "1"
-
-                 document.querySelector("#arrow").style.display = "inline"
-                 
-                 document.querySelector("#arrow").style.transform = "rotate(" + finalArray[i][5] +"deg)"
-                 
-                 
-
-
-                if(parseInt(finalArray[i][1]) > 6 && parseInt(finalArray[i][1]) < 21){
-                    document.querySelector("footer").style.backgroundColor = "green"                    
-                    document.querySelector("main").style.backgroundColor = "lightblue"
-                    document.querySelector(".sun").style.backgroundColor = "yellow"
-                }
-
-                 else{ 
-                    document.querySelector(".sun").style.backgroundColor = "white"   
-                    document.querySelector("footer").style.backgroundColor = "darkslategrey"                    
-                    document.querySelector("main").style.backgroundColor = "darkblue"
-                 }
-                 switch(parseInt(finalArray[i][1])){
-                     case 0: case 12 : document.querySelector(".sun").style.top = 20 + "%"; document.querySelector(".sun").style.left = 40 + "%"; break; 
-                    
-                     case 3: case 15 : document.querySelector(".sun").style.top = 20 + "%"; document.querySelector(".sun").style.left =  60 + "%"; break;  
-                     
-                     case 6: case 18 : document.querySelector(".sun").style.top = 40 + "%"; document.querySelector(".sun").style.left =  80 + "%"; break;
-                     
-                     case 9: case 21 : document.querySelector(".sun").style.top = 40 + "%";  document.querySelector(".sun").style.left =  20 + "%";break;  
-                    
-
-                     console.log(parseInt(finalArray[i][1]))
-                 }
-                }
-            }
-           
-          
-            document.querySelector("#select4").removeEventListener('change', four)
-            
-           document.querySelector("#select4").addEventListener('change', four)
-          }
-
-
-           document.querySelector("#select4").addEventListener('change', four)
-
-           
-
-        });
-    })
-    
-
-    
-
-
-
-
-
+passwordInput.addEventListener('input', (event)=> {
+    getToken.setAttribute('disabled', 'true')   
+    if(loginInput.value !== '' && passwordInput.value != '') {
+        console.log(loginInput.value);
+        getToken.removeAttribute('disabled') 
+    } else{        
+        console.log("disabled");        
+    }
 })
 
 
+getToken.addEventListener("click", () => {
+  event.preventDefault();
+  let login = document.querySelector("#login").value;
+  let password = document.querySelector("#password").value;
+
+  if (login == '' && password == '') {
+    getToken.setAttribute('disabled', 'true')
+    alert("Пароль или логин должен быть пустым")
+  } else {
+    let userCard = {
+      login,
+      password
+    }; 
+    getToken.setAttribute('disabled', 'false')
+    console.log(userCard);
+    fetch("http://localhost:5000/users/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userCard)
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        if (data["msg"]) alert("Пользователь с таким именем уже существует");
+        else localStorage.setItem("token", data.token);
+      });
+  }
+});
+
+login.addEventListener("click", event => {
+  event.preventDefault()
+  fetch("http://localhost:5000/users/loging", {
+    method: "GET",
+    headers: {
+      login: `${loginLogin.value}`,
+      password: `${passwordLogin.value}`
+    }
+  })
+  .then(res => res.json())
+  .then(res => {
+
+    if (res["isPassed"] == "true") {
+        alert(`${res["msg"]}`)
+        registerForm.style.display = "none"
+        loginForm.style.display = "none"
+        localStorage.setItem("token", res["token"]);
+    } else{
+      alert('Пароль или логин неверны')
+      registerForm.style.display = "none"
+      loginForm.style.display = "block"
+    }
+  });
+});
+
+showRegisterForm.addEventListener("click", event => {
+  event.preventDefault();
+  document.querySelector("#loginForm").style.display = "none";
+  document.querySelector("#registerForm").style.display = "block";
+});
+
+showLoginForm.addEventListener("click", event => {
+  event.preventDefault();
+  document.querySelector("#registerForm").style.display = "none";
+
+  if (localStorage.getItem("token")) {
+    fetch("http://localhost:5000/users/login", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+
+        if (res["isPassed"] == "true") {
+            alert(`${res["msg"]}`)
+            registerForm.style.display = "none"
+            loginForm.style.display = "none"
+        } else{
+          alert('Авторизация не прошла, пожалуйста введите логин и пароль')
+          registerForm.style.display = "none"
+          loginForm.style.display = "block"
+        }
+      });
+  } else {
+    localStorage.setItem('token', 'a')
+    alert("Для начала зарегистрируйтесь");
+  }
+});
 
 
+let hey = document.querySelector("#hey")
+hey.addEventListener('click', (event) => {
+  fetch("http://localhost:5000/auth/google")
+  .then(res => res.json())
+  .then((data) => {
+    console.log(data);
+  })
+})
+
+vk.addEventListener('click', (event) => {
+  console.log(window.location.href);
+  event.preventDefault()
+  fetch( "")
+  .then( res => res.json())
+  .then( res => console.log(res))
+})

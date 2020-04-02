@@ -1,64 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" style="height:100%;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body style="height: 100%;margin: 0;">
-    <img src="clouds.png" alt="" style="position: absolute; height: 25%; width: 100%;z-index: 1;">
-    <main style="height:75%;transition:1.5s">
-        <select id="select1">
-            <option>Выберите регион</option>      
-          </select>
-          <select name="" id="select2">
-              <option value="">
-                  Выберите город
-              </option>
-          </select>
-          <select name="" id="select3">
-              <option value="">
-                  Выберите дату
-              </option>
-          </select>
-          <select name="" id="select4">
-              <option value="">
-                  Выберите время
-              </option>
-          </select>
-          <div style="max-width:200px;background-color: rgb(255, 255, 255, 0.7);width: 50%;position: absolute;bottom:5px;left:0;margin: 0 auto;padding: 0%;">
-              <div id="city"></div>  
-              <div id="date"></div>
-              <div id="time"></div>
-              <div id="temp"></div>
-              <div id="hum"></div>
-              <div id="speed"></div>
-              <div id="direction"></div>
-
-          </div>
-          <div style="position: absolute;bottom:0;right:0;display: inline-block;width: 49%;max-width: 200px;">
-            <img id="img" src="" alt="" style="width: 100%;">
-            <img id="arrow" src="https://i.stack.imgur.com/Pm5ZL.png" alt="" style="    position: absolute;
-            margin: auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            display: inline;
-            opacity: 0;
-            max-width: 50px;
-            transform: rotate(-90deg);
-            transition: 1.5s;">
-          </div>
-        </main>
-    <footer style="height:25%;transition:1.5s">
-      <div class="sun">
-
-      </div>
-    </footer>
-    <script type="" src="script.js"></script> 
-    
+<body>
+    <main>
+        <button type="submit" id="showRegisterForm">Регистрация</button>
+        <button type="submit" id="showLoginForm">Вход</button>
+        <div>
+            <form id="registerForm">
+                <input id="login" type="text" placeholder="login">
+                <input id="password" type="text" placeholder="password">
+                <button type="submit" id="getToken">Зарегистрироваться</button>
+            </form>
+            <form id="loginForm" >
+                <input id="loginLogin" type="text" placeholder="login">
+                <input id="passwordLogin" type="text" placeholder="password">
+                <button id="enter" type="submit">Войти</button>
+            </form>
+        </div>
+        <a href="https://oauth.vk.com/authorize?client_id=7386949&display=popup&redirect_uri=http://localhost:5000/users/redirect/&scope=friends&response_type=code&v=5.103">Авторизация через ВК</a>
+    <script src="script.js"></script>
 </body>
-
-</html> 
+</html>
