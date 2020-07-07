@@ -3,7 +3,7 @@ parametres = parametres.split('&')
 let params = parametres.map((element) => {
    return element = element.split('=')
 })
-console.log(parametres);
+console.log(params);
 
 // console.log(getParameterByName('access_token'));
 // localStorage.setItem('access_token', )
