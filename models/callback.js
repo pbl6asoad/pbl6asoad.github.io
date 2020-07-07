@@ -6,6 +6,8 @@ let params = parametres.map((element) => {
 params.forEach((element) => {
     localStorage.setItem(element[0], element[1])
 })
+
+window.location.href = 'https://pbl6asoad.github.io/models/index'
 // console.log(params);
 
 // console.log(getParameterByName('access_token'));
