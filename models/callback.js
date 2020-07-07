@@ -1,9 +1,12 @@
-let parametres = window.location.href.substr(window.location.href.indexOf('#') + 1, 200)
+let parametres = window.location.href.substr(window.location.href.indexOf('#') + 1, window.location.href.length + 1)
 parametres = parametres.split('&')
 let params = parametres.map((element) => {
    return element = element.split('=')
 })
-console.log(params);
+params.forEach((element) => {
+    localStorage.setItem(element[0], element[1])
+})
+// console.log(params);
 
 // console.log(getParameterByName('access_token'));
 // localStorage.setItem('access_token', )
