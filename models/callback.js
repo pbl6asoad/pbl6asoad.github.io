@@ -1,8 +1,7 @@
 let parametres = window.location.href.substr(window.location.href.indexOf('#') + 1, 200)
 parametres = parametres.split('&')
-parametres.forEach((element) => {
+let params = parametres.map((element) => {
    return element = element.split('=')
-   
 })
 console.log(parametres);
 
