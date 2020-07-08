@@ -32,14 +32,7 @@ getFriends.addEventListener("click", () => {
 });
 
 if (localStorage.getItem("access_token")) {
-  fetch(`https://cors-anywhere.herokuapp.com/
-        https://api.vk.com/method/users.get?
-        access_token=${localStorage.getItem(
-          "access_token"
-        )}
-        &user_ids=${localStorage.getItem(
-          "user_id"
-        )}&fields=photo_50,city,verified&name_case=Nom&v=5.120`)
+  fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/users.get?access_token=${localStorage.getItem("access_token")}&user_ids=${localStorage.getItem("user_id")}&fields=photo_50,city,verified&name_case=Nom&v=5.120`)
         .then(res => res.json())
         .then(res => console.log(res))
 }
