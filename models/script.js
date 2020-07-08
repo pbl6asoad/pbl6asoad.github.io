@@ -52,14 +52,14 @@ if (localStorage.getItem("access_token")) {
   )
     .then((res) => res.json())
     .then((res) => {
-      let data = []
       localStorage.setItem('img', res.response[0].photo_max)
       localStorage.setItem('name', res.response[0].first_name)
       localStorage.setItem('surname', res.response[0].last_name)
       localStorage.setItem('city', res.response[0].city.title)
-
+      getInfo()
 
       
 
     });
 }
+getInfo()
