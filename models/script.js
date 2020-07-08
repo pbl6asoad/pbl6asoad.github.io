@@ -6,7 +6,7 @@ vkAuth.addEventListener("click", () => {
 
 if (localStorage.getItem("access_token")) {
   fetch(
-    `https://api.vk.com/method/friends.get?user_ids=${localStorage.getItem(
+    `https://cors-anywhere.herokuapp.com/https://api.vk.com/method/friends.get?user_ids=${localStorage.getItem(
       "user_id"
     )}&fields=city,domain&access_token=${localStorage.getItem(
       "access_token"
