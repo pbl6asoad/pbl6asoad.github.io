@@ -20,7 +20,7 @@ if (localStorage.getItem("access_token", {
       return response.json();
     })
     .then((res) => {
-      console.log(res.items);
+      console.log(res);
       // let data = [];
       // data = res.items.map((element) => {
       //   `
