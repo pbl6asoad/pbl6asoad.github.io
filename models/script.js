@@ -1,10 +1,6 @@
 let vkAuth = document.querySelector("#vkAuth");
 let getFriends = document.querySelector("#getFriends");
-vkAuth.addEventListener("click", () => {
-  window.location.href =
-    "https://oauth.vk.com/authorize?client_id=7533124&redirect_uri=https://pbl6asoad.github.io/models/callback&scope=offline&response_type=token&v=5.120";
-});
-let getInfo = () => {
+let getInfo = function(){
   if(localStorage.getItem('name')) {
     document.querySelector("#accountInfo").innerHTML = `<div class="card" style="width: 18rem;">
     <img class="card-img-top" src="${localStorage.getItem('img')}" alt="Card image cap">
@@ -16,6 +12,11 @@ let getInfo = () => {
   </div>`;
   }
 }
+getInfo()
+vkAuth.addEventListener("click", () => {
+  window.location.href =
+    "https://oauth.vk.com/authorize?client_id=7533124&redirect_uri=https://pbl6asoad.github.io/models/callback&scope=offline&response_type=token&v=5.120";
+});
 getFriends.addEventListener("click", () => {
   fetch(
     `https://cors-anywhere.herokuapp.com/https://api.vk.com/method/friends.get?user_ids=${localStorage.getItem(
@@ -57,9 +58,5 @@ if (localStorage.getItem("access_token")) {
       localStorage.setItem('surname', res.response[0].last_name)
       localStorage.setItem('city', res.response[0].city.title)
       getInfo()
-
-      
-
     });
 }
-getInfo()
