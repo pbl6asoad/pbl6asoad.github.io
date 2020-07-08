@@ -23,8 +23,8 @@ if(localStorage.getItem('access_token')) {
             redirect: 'follow', 
             referrerPolicy: 'no-referrer'
           })
-          .then(response => {
-            return response.json();
+          .then((response) => {
+            return response.json()
           })
           .then(res => {
               let data = []
