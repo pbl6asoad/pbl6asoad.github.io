@@ -17,7 +17,7 @@ if(localStorage.getItem('access_token')) {
             referrerPolicy: 'no-referrer'
           })
           .then((response) => {
-            return response.json()
+            return response.text()
           })
           .then(res => {
               let data = []
