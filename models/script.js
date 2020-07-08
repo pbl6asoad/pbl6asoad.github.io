@@ -23,11 +23,13 @@ if (localStorage.getItem("access_token", {
       console.log(res.response.items);
       let data = [];
       data = res.response.items.map((element) => {
-        `
-        <a href="vk.com/id${element.id}">
-          <p>${element.first_name} ${element.last_name}</p>
-        </a>
-        `
+console.log(element);
+
+// `
+// <a href="vk.com/id${element.id}">
+//   <p>${element.first_name} ${element.last_name}</p>
+// </a>
+// `
       })
       document.querySelector('p').innerHTML = data.join('')
       console.log(data);
