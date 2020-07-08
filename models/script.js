@@ -38,7 +38,7 @@ getFriends.addEventListener("click", () => {
                 </a>
                `;
       });
-      document.querySelector("p").innerHTML = data.join("");
+      document.querySelector("#friends").innerHTML = data.join("");
       console.log(data);
     });
 });
