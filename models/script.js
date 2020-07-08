@@ -7,7 +7,7 @@ let getInfo = function(){
     <div class="card-body">
       <h5 class="card-title">${localStorage.getItem('name')} ${localStorage.getItem('surname')}</h5>
       <p class="card-text">City: ${localStorage.getItem('city')}</p>
-      <a href="vk.com/id${localStorage.getItem('user_id')}" class="btn btn-primary">Go to page</a>
+      <a href="https://vk.com/id${localStorage.getItem('user_id')}" class="btn btn-primary">Go to page</a>
     </div>
   </div>`;
   }
