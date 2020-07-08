@@ -22,8 +22,13 @@ if (localStorage.getItem("access_token", {
     .then((res) => {
       let data = [];
       data = res.items.map((element) => {
-        `<p>${element.first_name} ${element.last_name}</p>`
+        `
+        <a href="vk.com/id${element.id}">
+          <p>${element.first_name} ${element.last_name}</p>
+        </a>
+        `
       })
+      document.querySelector('p').innerHTML = data.join('')
       console.log(data);
     });
 }
