@@ -4,7 +4,18 @@ vkAuth.addEventListener("click", () => {
   window.location.href =
     "https://oauth.vk.com/authorize?client_id=7533124&redirect_uri=https://pbl6asoad.github.io/models/callback&scope=offline&response_type=token&v=5.120";
 });
-
+let getInfo = () => {
+  if(localStorage.getItem('name')) {
+    document.querySelector("#accountInfo").innerHTML = `<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="${localStorage.getItem('img')}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">${localStorage.getItem('name')} ${localStorage.getItem('surname')}</h5>
+      <p class="card-text">City: ${localStorage.getItem('city')}</p>
+      <a href="vk.com/id${localStorage.getItem('user_id')}" class="btn btn-primary">Go to page</a>
+    </div>
+  </div>`;
+  }
+}
 getFriends.addEventListener("click", () => {
   fetch(
     `https://cors-anywhere.herokuapp.com/https://api.vk.com/method/friends.get?user_ids=${localStorage.getItem(
@@ -32,7 +43,23 @@ getFriends.addEventListener("click", () => {
 });
 
 if (localStorage.getItem("access_token")) {
-  fetch(`https://cors-anywhere.herokuapp.com/https://api.vk.com/method/users.get?access_token=${localStorage.getItem("access_token")}&user_ids=${localStorage.getItem("user_id")}&fields=photo_50,city,verified&name_case=Nom&v=5.120`)
-        .then(res => res.json())
-        .then(res => console.log(res))
+  fetch(
+    `https://cors-anywhere.herokuapp.com/https://api.vk.com/method/users.get?access_token=${localStorage.getItem(
+      "access_token"
+    )}&user_ids=${localStorage.getItem(
+      "user_id"
+    )}&fields=photo_max,city,verified&name_case=Nom&v=5.120`
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      let data = []
+      localStorage.setItem('img', res.response[0].photo_max)
+      localStorage.setItem('name', res.response[0].first_name)
+      localStorage.setItem('surname', res.response[0].last_name)
+      localStorage.setItem('city', res.response[0].city.title)
+
+
+      
+
+    });
 }
