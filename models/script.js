@@ -4,14 +4,7 @@ vkAuth.addEventListener('click', () => {
 })
 
 if(localStorage.getItem('access_token')) {
-    fetch(`https://api.vk.com/method/friends.get
-          ?user_ids=${localStorage.getItem('user_id')}
-          &fields=city,domain
-          &access_token=${localStorage.getItem('access_token')}
-          &name_case=ins
-          &count=5
-          &order=name
-          &v=5.120`, 
+    fetch(`https://api.vk.com/method/friends.get?user_ids=${localStorage.getItem('user_id')}&fields=city,domain&access_token=${localStorage.getItem('access_token')}&name_case=ins&count=5&order=name&v=5.120`, 
           {
             method: 'GET',
             mode: 'no-cors', 
