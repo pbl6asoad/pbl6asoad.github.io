@@ -1,1 +1,29 @@
-
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="h-100 mt-5">
+    <div id="form" class="input-group mb-3 mx-auto mt-5">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            Учитывать регистр?  
+            <input id="checkbox" type="checkbox" class="ml-4" aria-label="Checkbox for following text input">
+          </div>
+        </div>
+        <input id="input" type="text" class="form-control" aria-label="Text input with checkbox" class="w-50">
+        <div class="input-group-append">
+            <button id="findByLength" class="btn btn-outline-secondary" type="button">Поиск по длинне фразы</button>
+            <button id="findBySubstr" class="btn btn-outline-secondary" type="button">Поиск по подстроке</button>
+        </div>
+      </div>
+      <ol>
+      
+      </ol>
+    <script src="script.js"></script>
+</body>
+</html>
