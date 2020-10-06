@@ -1,0 +1,23 @@
+.hided-pop-up__animation-default {
+    animation-iteration-count: infinite;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-delay: 1s;
+}
+@keyframes example {
+    0%   {width: 70px;}
+    15%  {width: 50px}
+    /* 25%  {width: 75px}
+    50%  {width: 100px} */
+    30% {width: 70px}
+}
+.hided-pop-up__animation-hover {
+    animation-iteration-count: 1;
+    animation-name: hover;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes hover {
+    /* 0%   {width: 20px; height: 50px;} */
+    100% {width: 100px; height: 100px}
+}
